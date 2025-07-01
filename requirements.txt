@@ -1,0 +1,4 @@
+opencv-python==4.8.1.78
+ultralytics==8.1.33
+pyttsx3==2.90
+numpy==1.26.4
