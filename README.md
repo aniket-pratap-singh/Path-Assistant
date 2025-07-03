@@ -2,6 +2,7 @@
 A real-time vision-based assistant that uses YOLOv8 and text-to-speech to guide whether it's safe to move forward based on road and obstacle detection.
 
 🚀 Features
+    
     ✅ Detects roads using a custom YOLOv8 model.
 
     🚧 Detects obstacles using pretrained YOLOv8n.
