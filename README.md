@@ -14,6 +14,7 @@ A real-time vision-based assistant that uses YOLOv8 and text-to-speech to guide 
     🎥 Works with webcam or uploaded video.
 
 🛠️ Tech Stack
+
     -YOLOv8 (ultralytics) for object detection
 
     -OpenCV for video handling
