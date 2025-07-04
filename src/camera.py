@@ -53,7 +53,7 @@ def main_camera():
 def downloads():
     cap = None
     try:
-        video_path = "C:/Users/prata/OneDrive/Desktop/Path Assitant/src/myvideo.mp4"
+        video_path = "C:/Users/prata/OneDrive/Desktop/Path Assitant/video/myvideo.mp4"
         if not video_path or not os.path.exists(video_path):
             print("Video not found after download.")
             return

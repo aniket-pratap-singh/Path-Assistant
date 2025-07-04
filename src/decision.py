@@ -17,7 +17,7 @@ home_obstacles_total = {"person", "chair", "couch", "potted plant", "bed", "dini
 road_obstacles_total ={"person", "bicycle", "car", "airplane", "motorcycle", "bus", "train", "truck", "traffic", "fire hydrant", "stop sign", "parking meter", "bench",
     "bird", "cat", "dog", "horse", "sheep", "cow"}
 
-
+last_msg=None
 
 def main_decision(detection1, detection2):
     all_detections = detection1 + detection2
@@ -32,25 +32,27 @@ def main_decision(detection1, detection2):
 
 
     if road_conf > 0.8 and len(obstacle_present) == 1:
-        message="Clear path detected — looks like an open road or wall, be cautious."
+        message="Clear path detected. — looks like an open road or wall, be cautious."
     elif 0.45 < road_conf <= 0.8 and len(road_obstacles) == 0 and len(home_obstacles) == 0:
         message="Probably an empty road, but be cautious."
     elif len(home_obstacles) > len(road_obstacles) and road_conf > 0.5 :
-        message="It seems like you're indoors with some obstacles — walk carefully."
+        message="It seems like you're indoors with some obstacles. — walk carefully."
     elif len(road_obstacles) > len(home_obstacles) and road_conf > 0.5 :
-        message="Looks like an outdoor road with traffic — proceed carefully."
+        message="Looks like an outdoor road with traffic. — proceed carefully."
     elif 'road' in obstacle_present and len(road_obstacles) > len(home_obstacles) and road_conf <= 0.5 :
-        message="Not able to find clear space, might be a busy road — Stay in place."
+        message="Not able to find clear space, might be a busy road. — Stay in place."
     elif 'road' in obstacle_present and len(home_obstacles) > len(road_obstacles) and road_conf <= 0.5 :
-        message="Not able to find clear space, might be indoors with obstacles — Stay in place."
+        message="Not able to find clear space, might be indoors with obstacles. — Stay in place."
     elif person_conf>0.8 and ((len(road_obstacles) == 1 and len(home_obstacles) == 1) or road_conf <= 0.8):
-        message="Person detected in front — be cautious and move a bit."
+        message="Person detected in front. — be cautious and move a bit."
     elif len(home_obstacles)==len(road_obstacles) and person_conf<0.5 and road_conf>0.5:
-        message="Looks like an outdoor road with traffic — proceed carefully."
+        message="Looks like an outdoor road with traffic. — Proceed carefully."
     else:
-        message="Not able to detect properly or this is night. — Stay in place."
-         
-    print(message)
+        message="This is night or there is no space ahead. — Stay in place."
+    global last_msg
+    if message!=last_msg :
+        print(message)
+        last_msg=message
     speak(message)
     
 

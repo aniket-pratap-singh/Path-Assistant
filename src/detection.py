@@ -42,12 +42,12 @@ def main_detection(frame):
 
 
 def detect():
-    for frame in downloads():
+    for frame in stream("https://www.youtube.com/watch?v=zOq2XdwHGT0"):
         detection1, detection2=main_detection(frame)
         yield detection1, detection2
         
         
-# yt-dlp -f mp4 -o "C:/Users/prata/OneDrive/Desktop/Path Assitant/src/myvideo.mp4" "url"
+# yt-dlp -f mp4 -o "C:/Users/prata/OneDrive/Desktop/Path Assitant/video/myvideo.mp4" "url"
 
 
 
