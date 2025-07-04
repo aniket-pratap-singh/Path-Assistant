@@ -45,11 +45,8 @@ def main_decision(detection1, detection2):
         message="Not able to find clear space, might be indoors with obstacles — Stay in place."
     elif person_conf>0.8 and ((len(road_obstacles) == 1 and len(home_obstacles) == 1) or road_conf <= 0.8):
         message="Person detected in front — be cautious and move a bit."
-    # elif len(road_obstacles) > len(home_obstacles) and person_conf>0.8 and ((len(road_obstacles) == 0 and len(home_obstacles) == 0) or road_conf > 0.8):
-    #     message="Person detected nearby — be cautious and proceed carefully."
     elif len(home_obstacles)==len(road_obstacles) and person_conf<0.5 and road_conf>0.5:
         message="Looks like an outdoor road with traffic — proceed carefully."
-
     else:
         message="Not able to detect properly or this is night. — Stay in place."
          
@@ -66,6 +63,5 @@ def decision():
         print("⛔ Interrupted by user")
         cv2.destroyAllWindows()
             
-
 
 decision()

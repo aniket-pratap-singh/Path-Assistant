@@ -34,7 +34,7 @@ def main_detection(frame):
         cv2.putText(annotated_frame, f"{class_name} {confidence:.2f}", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
 
     resized_frame = cv2.resize(annotated_frame, (800, 600))
-    cv2.imshow("Unified Detection", resized_frame)
+    cv2.imshow("Detection", resized_frame)
 
     return detection1, detection2
 
